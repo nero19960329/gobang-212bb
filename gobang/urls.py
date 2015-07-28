@@ -21,8 +21,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'logic.views.home', name='home'),
     url(r'^lobby/$', 'logic.views.lobby', name='lobby'),
-    url(r'^register/$', 'logic.views.register', name='register'),
-    url(r'^login/$', 'logic.views.login', name='login'),
+    url(r'^register/$', 'logic.user.register', name='register'),
+    # url(r'^login/$', 'logic.views.login', name='login'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
