@@ -15,3 +15,4 @@ class User(models.Model):
     uid = models.CharField(max_length=8)        # 用户名
     name = models.CharField(max_length=8)       # 昵称
     password = models.CharField(max_length=16)  # 密码
+    total_games = models.IntegerField()         # 总场数

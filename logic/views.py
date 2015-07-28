@@ -35,3 +35,6 @@ def register(request):
                 return HttpResponse("ok!")
             else:
                 return HttpResponse("same name!")
+
+# 登录用户时间
+# def login(request):
