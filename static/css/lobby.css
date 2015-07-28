@@ -6,7 +6,7 @@ html {
 }
 
 body {
-	background-image: url("../src/image/lobby_background.jpg");
+	background-image: url("/static/image/lobby_background.jpg");
 	padding: 0;
 }
 
@@ -95,18 +95,18 @@ section {
 }
 
 .leftuser {
-	background-image: url("../src/image/lobby_leftchair.png");
+	background-image: url("/static/image/lobby_leftchair.png");
 }
 
 .rightuser {
-	background-image: url("../src/image/lobby_rightchair.png");
+	background-image: url("/static/image/lobby_rightchair.png");
 }
 
 .table {
 	float: left;
 	width: 50px;
 	height: 50px;
-	background-image: url("../src/image/lobby_activetable.jpg");
+	background-image: url("/static/image/lobby_activetable.jpg");
 	border-radius: 10px;
 	border: 2px solid rgb(68, 85, 105);
 	margin: 0 5px;

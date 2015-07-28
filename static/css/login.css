@@ -1,5 +1,5 @@
 body{
-	background: url(../src/image/login_bg0.jpg) no-repeat;
+	background: url(/static/image/login_bg0.jpg) no-repeat;
 	background-size: cover;
 	font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }

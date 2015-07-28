@@ -20,9 +20,9 @@ function setTables(tablenumber) {
 
 		var randomNumber = parseInt(Math.random() * 4);
 		if (randomNumber === 0) {
-			table.css('background-image', 'url("src/image/lobby_activetable.jpg")');
+			table.css('background-image', 'url("/static/image/lobby_activetable.jpg")');
 		} else {
-			table.css('background-image', 'url("src/image/lobby_emptytable.jpg")');
+			table.css('background-image', 'url("/static/image/lobby_emptytable.jpg")');
 		}
 
 		var tablenum = $('<div class="tablenumber">- ' + (i + 1) + ' -</div>');

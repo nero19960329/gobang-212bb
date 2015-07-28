@@ -2,24 +2,38 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
-		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+		<link rel="stylesheet" type="text/css" href="/static/css/login.css">
 		<title>五子棋传奇·霸业</title>
-		<script src='js/jquery-2.1.4.min.js'></script>
-		<script src='js/login.js'></script>
+		<script src='/static/js/jquery-2.1.4.min.js'></script>
+		<script src='/static/js/login.js'></script>
 	</head>
 	<body>
+        {{ STATIC_URL }}
+        <script type="text/javascript">
+            function login() {
+                document.login_form.action = "/login/";
+                document.login_form.submit();
+            }
+
+            function register() {
+                document.login_form.action = "/register/";
+                document.login_form.submit();
+            }
+        </script>
 		<div class='login_box'>
 			<h1>请先登录</h1>
-            <form method="POST">
-                <input class='inputname' placeholder='请输入用户名'/>
-                <input class='inputpassword' placeholder='密码'/>
+            <form name="login_form" method="POST">
+                {% csrf_token %}
+                {{ form }}
+{#                <input class='inputname' placeholder='请输入用户名'/>#}
+{#                <input class='inputpassword' placeholder='密码'/>#}
                 <input type="button" value="登录" onclick="login()" />
                 <input type="button" value="注册" onclick="register()" />
             </form>
 		</div>
 		<div class='room_box'>
-			<img src='src/image/login_logo.gif'>
+			<img src='/static/image/login_logo.gif'>
 			<div class='list-group'>
 				<a href='#' class='list-group-item'>传奇爸业1房<span class='badge'>0人</span></a>
 				<a href='#' class='list-group-item'>传奇爸业2房<span class='badge'>0人</span></a>
@@ -44,34 +58,34 @@
 			<div class='chooseicon'>
 				<lable>请选择一个头像:</lable>
 				<div class='iconbox'>
-					<img src="src/image/login_lzc1.jpg">
+					<img src="/static/image/login_lzc1.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_lzc2.jpg">
+					<img src="/static/image/login_lzc2.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_zwj1.jpg">
+					<img src="/static/image/login_zwj1.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_zwj2.jpg">
+					<img src="/static/image/login_zwj2.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_hrxd.jpg">
+					<img src="/static/image/login_hrxd.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_zf.jpg">
+					<img src="/static/image/login_zf.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_qz.jpg">
+					<img src="/static/image/login_qz.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_gxd1.jpg">
+					<img src="/static/image/login_gxd1.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_gxd2.jpg">
+					<img src="/static/image/login_gxd2.jpg">
 				</div>
 				<div class='iconbox'>
-					<img src="src/image/login_bige.jpg">
+					<img src="/static/image/login_bige.jpg">
 				</div>
 			</div>
 			<button id='confirm'>确定</button>
