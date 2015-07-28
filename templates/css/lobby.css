@@ -1,0 +1,151 @@
+html {
+	min-width: 800px;
+	min-height: 600px;
+	font-family: "Microsoft YaHei";
+	padding: 0;
+}
+
+body {
+	background-image: url("../src/image/lobby_background.jpg");
+	padding: 0;
+}
+
+header {
+	height: 150px;
+}
+
+#headericon {
+	float: left;
+	border-radius: 8%;
+	box-shadow: 0 3px 10px #000;
+	width: 100px;
+	height: 100px;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+#headertitle {
+	float: left;
+	margin-left: 30px;
+	margin-top: 30px;
+	color: #000;
+}
+
+#title {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+#userinformation {
+	float: left;
+	background-color: #fff;
+	opacity: 0.5;
+	width: 150px;
+	margin-left: 100px;
+	margin-top: 25px;
+	padding: 15px;
+	border-radius: 5px;
+	font-size: 0.9em;
+}
+
+#username {
+	margin-bottom: 10px;
+}
+
+section {
+	background-color: rgb(94, 131, 173);
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+}
+
+#lobbyarea {
+	float: left;
+	margin: 10px 0 10px 10px;
+	overflow-y: scroll;
+}
+
+#userlist, #friendlist {
+	float: right;
+	background-color: #fff;
+	border-radius: 5px;
+	width: 250px;
+	margin: 5px 5px 5px 0;
+
+	-moz-user-select: none;
+	-o-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	cursor: default;
+}
+
+.tables {
+	float: left;
+	margin: 30px 10px;
+	width: 125px;
+}
+
+.leftuser, .rightuser {
+	float: left;
+	width: 30px;
+	height: 50px;
+}
+
+.leftuser {
+	background-image: url("../src/image/lobby_leftchair.png");
+}
+
+.rightuser {
+	background-image: url("../src/image/lobby_rightchair.png");
+}
+
+.table {
+	float: left;
+	width: 50px;
+	height: 50px;
+	background-image: url("../src/image/lobby_activetable.jpg");
+	border-radius: 10px;
+	border: 2px solid rgb(68, 85, 105);
+	margin: 0 5px;
+}
+
+.tablenumber {
+	margin-top: 75px;
+	text-align: center;
+	color: #fff;
+	font-size: 0.8em;
+}
+
+.listheader {
+	background-color: rgb(205, 215, 225);
+	text-align: center;
+	line-height: 200%;
+	border-radius: 5px 5px 0 0;
+	font-size: 0.9em;
+}
+
+.tablelist {
+	font-size: 0.8em;
+	border-collapse: collapse;
+	margin: 5px 0;
+}
+
+.tablelist tr th {
+	border-right: 1px solid #cbcbcb;
+	cursor: pointer;
+	color: #666666;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+
+.tablerow {
+	margin: 0;
+	padding: 0;
+}
+
+.tablerow:hover {
+	background-color: #D1EEEE;
+}
