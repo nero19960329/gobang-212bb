@@ -50,6 +50,10 @@ $(window).load(function(){
 		width: 800 / 1899 * window_width + "px",
 		height: 540 / 800 * window_height + "px"
 	});
+
+	for (var i = 0; i < $('.list-group a').length; ++i) {
+		$($('.list-group a')[i]).attr('href', '/lobby/?lid=' + (i + 1));
+	}
 });
 
 $(window).resize(function(){

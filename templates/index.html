@@ -32,10 +32,9 @@
 		<div class='room_box'>
 			<img src='/static/image/login_logo.gif'>
 			<div class='list-group'>
-				<a href='#' class='list-group-item'>传奇爸业1房<span class='badge'>0人</span></a>
-				<a href='#' class='list-group-item'>传奇爸业2房<span class='badge'>0人</span></a>
-				<a href='#' class='list-group-item'>雷霆知怒1房(无禁手)<span class='badge'>0人</span></a>
-				<a href='#' class='list-group-item'>雷霆知怒2房(无禁手)<span class='badge'>0人</span></a>
+                {% for lobby in lobbies %}
+				<a class='list-group-item'>{{ lobby.name }}<span class='badge'>0人</span></a>
+                {% endfor %}
 			</div>
 		</div>
 		<div id='mask'></div>

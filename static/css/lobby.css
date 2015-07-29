@@ -92,6 +92,16 @@ section {
 	float: left;
 	width: 30px;
 	height: 50px;
+	cursor: pointer;
+}
+
+.leftuser:hover, .rightuser:hover {
+    opacity: 0.75;
+}
+
+.leftuser:active, .rightuser:active {
+	position: relative;
+	top: 1px;
 }
 
 .leftuser {
@@ -106,10 +116,19 @@ section {
 	float: left;
 	width: 50px;
 	height: 50px;
-	background-image: url("/static/image/lobby_activetable.jpg");
 	border-radius: 10px;
 	border: 2px solid rgb(68, 85, 105);
 	margin: 0 5px;
+	cursor: pointer;
+}
+
+.table:hover {
+    opacity: 0.75;
+}
+
+.table:active {
+    position: relative;
+    top: 1px;
 }
 
 .tablenumber {
@@ -131,6 +150,7 @@ section {
 	font-size: 0.8em;
 	border-collapse: collapse;
 	margin: 5px 0;
+    overflow-y: scroll;
 }
 
 .tablelist tr th {
