@@ -16,8 +16,8 @@
             }
 
             function register() {
-                document.register_form.action = "/register/";
-                document.register_form.submit();
+                document.login_form.action = "/register/";
+                document.login_form.submit();
             }
         </script>
 		<div class='login_box'>
@@ -26,7 +26,7 @@
                 {% csrf_token %}
                 {{ form }}
                 <input type="button" value="登录" onclick="login()" />
-                <input type="button" value="注册" id="regbutton" />
+                <input type="button" value="注册" onclick="register()" />
             </form>
 		</div>
 		<div class='room_box'>
@@ -40,59 +40,53 @@
 		</div>
 		<div id='mask'></div>
 		<div id='regbox'>
-            <form name="register_form" method="get">
-			    <div class='form-group'>
-				    <lable for='createuser'>用户名:</lable>
-				    <input class='form-control' id='createuser' placeholder = 'username' name="reg_user">
-			    </div>
-			    <div class='form-group'>
-				    <lable for='createpassword'>密码：</lable>
-				    <input type='password' class='form-control' id='createpassword' placeholder='password' name="reg_password">
-			    </div>
-			    <div class='form-group'>
-				    <lable for='createpassword1'>再输入一次密码：</lable>
-				    <input class='form-control' id='createpassword1' placeholder='password agian' name="reg_password_again">
-			    </div>
-                <div class="form-group">
-                    <lable for='createpassword1'>设置你的昵称：</lable>
-				    <input class='form-control' id='createname' placeholder='nickname' name="reg_name">
-                </div>
-			    <div class='chooseicon'>
-				    <lable>请选择一个头像:</lable>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_lzc1.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_lzc2.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_zwj1.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_zwj2.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_hrxd.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_zf.jpg">
-				    </div>
-				    <div class='iconbox'>
-				    	<img src="/static/image/login_qz.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_gxd1.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_gxd2.jpg">
-				    </div>
-				    <div class='iconbox'>
-					    <img src="/static/image/login_bige.jpg">
-				    </div>
-			    </div>
-            </form>
-			<input id="confirm" type="button" value="确认" onclick="register()" />
-            <input id="cancel" type="button" value="取消"  />
+			<div class='form-group'>
+				<lable for='createuser'>用户名:</lable>
+				<input class='form-control' id='createuser' placeholder = 'username'>
+			</div>
+			<div class='form-group'>
+				<lable for='createpassword'>密码：</lable>
+				<input class='form-control' id='createpassword' placeholder='password'>
+			</div>
+			<div class='form-group'>
+				<lable for='createpassword1'>再输入一次密码：</lable>
+				<input class='form-control' id='createpassword1' placeholder='password agian'>
+			</div>
+			<div class='chooseicon'>
+				<lable>请选择一个头像:</lable>
+				<div class='iconbox'>
+					<img src="/static/image/login_lzc1.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_lzc2.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_zwj1.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_zwj2.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_hrxd.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_zf.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_qz.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_gxd1.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_gxd2.jpg">
+				</div>
+				<div class='iconbox'>
+					<img src="/static/image/login_bige.jpg">
+				</div>
+			</div>
+			<button id='confirm'>确定</button>
+			<button id='cancel'>取消</button>
 		</div>
 	</body>
 </html>
