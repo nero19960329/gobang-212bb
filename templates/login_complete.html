@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+		<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+		<title>五子棋传奇·霸业</title>
+		<script src='/static/js/jquery-2.1.4.min.js'></script>
+		<script src='/static/js/login.js'></script>
+	</head>
+	<body>
+		<div class='login_box'>
+            <h1>欢迎回来</h1>
+            <ul id="userinfo"></ul>
+		</div>
+		<div class='room_box'>
+			<img src='/static/image/login_logo.gif'>
+			<div class='list-group'>
+				<a href='#' class='list-group-item'>传奇爸业1房<span class='badge'>0人</span></a>
+				<a href='#' class='list-group-item'>传奇爸业2房<span class='badge'>0人</span></a>
+				<a href='#' class='list-group-item'>雷霆知怒1房(无禁手)<span class='badge'>0人</span></a>
+				<a href='#' class='list-group-item'>雷霆知怒2房(无禁手)<span class='badge'>0人</span></a>
+			</div>
+		</div>
+	</body>
+    <script>
+        var user = {{ Dict|safe }};
+        var li1 = $("<li>用户id："+user.uid+"<li>");
+        var li2 = $("<li>昵称:"+user.name+"<li>");
+        $("#userinfo").append(li1);
+        $("#userinfo").append(li2);
+    </script>
+</html>
