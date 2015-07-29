@@ -17,4 +17,3 @@ def home(request):
 
 def lobby(request):
     return render_to_response("lobby.html", context_instance=RequestContext(request))
-
