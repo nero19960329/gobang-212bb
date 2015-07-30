@@ -42,6 +42,7 @@ function lobby_data() {
 		var tablerows = $('#userlist .tablerow');
 		tablerows.remove();
 		var user_length = ret.lobby_users.length;
+		$('#subtitle').html(user_length + "人正在游戏中");
 		for (var i = 0; i < user_length; ++i) {
 			var row = $('<tr class="tablerow"><td>' + ret.lobby_users[i].name + '</td><td>0</td><td>0</td><td>0</td><td>0</td>/tr>');
 			$($('.tablelist')[1]).append(row);
