@@ -15,25 +15,29 @@
 				<div id="subtitle">{{ all_user_number }}人正在游戏中</div>
 			</div>
 			<div id="userinformation">
-				<div id="username">滅刂龜</div>
+				<div id="username"></div>
 				<div id="userscore">积分：250</div>
 			</div>
 		</header>
 		
 		<section>
 			<div id="lobbyarea">
-                {% for room in rooms %}
-                <div class="tables">
-                    <div class="leftuser"></div>
-                    {% if not room.game_id %}
-                        <div class="table" style="background-image: url('/static/image/lobby_emptytable.jpg')"></div>
-                    {% else %}
-                        <div class="table" style="background-image: url('/static/image/lobby_activetable.jpg')"></div>
-                    {% endif %}
-                    <div class="rightuser"></div>
-                    <div class="tablenumber"></div>
-                </div>
-                {% endfor %}
+                {% if lobby_id == 1 %}
+                    {% for room in rooms %}
+                    <div class="tables">
+                        <div class="leftuser"></div>
+                        {% if not room.game_id %}
+                            <div class="table" style="background-image: url('/static/image/lobby_emptytable.jpg')"></div>
+                        {% else %}
+                            <div class="table" style="background-image: url('/static/image/lobby_activetable.jpg')"></div>
+                        {% endif %}
+                        <div class="rightuser"></div>
+                        <div class="tablenumber"></div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div id="match">开始匹配</div>
+                {% endif %}
             </div>
 			<div id="friendlist">
 				<div class="listheader">好友</div>
@@ -224,7 +228,17 @@
 				</table>
 			</div>
 		</section>
-		
-		<script type="text/javascript" src="/static/js/lobby.js"></script>
+
+        <form name="into_room_form" method="POST">
+            {% csrf_token %}
+            {{ into_room_form }}
+        </form>
+
+        <script type="text/javascript">
+            var curr_user = {{ user|safe }};
+            $('#username').html(curr_user.name);
+            var lobby_id = {{ lid|safe }};
+        </script>
+		<script type="text/javascript" src="/static/js/lobby.js" charset="UTF-8"></script>
 	</body>
 </html>

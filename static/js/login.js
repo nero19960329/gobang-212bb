@@ -51,9 +51,7 @@ $(window).load(function(){
 		height: 540 / 800 * window_height + "px"
 	});
 
-	for (var i = 0; i < $('.list-group a').length; ++i) {
-		$($('.list-group a')[i]).attr('href', '/lobby/?lid=' + (i + 1));
-	}
+    setInterval(getData_login, 5000);
 });
 
 $(window).resize(function(){
@@ -73,11 +71,20 @@ $(window).resize(function(){
 	});
 	$("#loginbutton").css({
 		"font-size": 20 * window_width / 1899 + "px"
-	})
+	});
 	$("#regbutton").css({
 		"font-size": 20 * window_width / 1899 + "px"
-	})
+	});
 	$("#roomlist").css({
 		"height": 235 * window_height / 800 + "px"
-	})
-})
+	});
+});
+
+function getData_login() {
+    $.getJSON("/user_number/", function(ret) {
+        var user_number_list = $('.badge');
+        for (var i = 0; i < user_number_list.length; ++i) {
+            user_number_list[i].innerHTML = ret[i] + "人";
+        }
+    });
+}

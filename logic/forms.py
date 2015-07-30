@@ -20,3 +20,34 @@ class RegisterForm(forms.Form):
             attrs={'placeholder': "请输入密码"}
         ),
     )
+
+
+class IntoLobbyForm(forms.Form):
+    uid = forms.CharField(
+        widget=forms.HiddenInput(
+            attrs={'value': ""}
+        ),
+    )
+    lid = forms.IntegerField(
+        widget=forms.HiddenInput(
+            attrs={'value': ""}
+        ),
+    )
+
+
+class IntoRoomForm(forms.Form):
+    uid = forms.CharField(
+        widget=forms.HiddenInput(
+            attrs={'value': ""}
+        ),
+    )
+    lid = forms.IntegerField(
+        widget=forms.HiddenInput(
+            attrs={'value': ""}
+        ),
+    )
+    rid = forms.IntegerField(
+        widget=forms.HiddenInput(
+            attrs={'value': ""}
+        ),
+    )

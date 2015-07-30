@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+		<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+		<title>五子棋传奇·霸业</title>
+		<script src='/static/js/jquery-2.1.4.min.js'></script>
+		<script src='/static/js/login.js' charset="UTF-8"></script>
+	</head>
+	<body>
+		<div class='login_box'>
+            <h1>欢迎回来</h1>
+            <ul id="userinfo"></ul>
+		</div>
+		<div class='room_box'>
+			<img src='/static/image/login_logo.gif'>
+			<div class='list-group'>
+				{% for lobby in lobbies %}
+				<div class='list-group-item'>{{ lobby.lobby_name }}<span class='badge'>{{ lobby.user_num }}人</span></div>
+                {% endfor %}
+			</div>
+		</div>
+
+        <form name="into_lobby_form" method="POST">
+            {% csrf_token %}
+            {{ into_lobby_form }}
+        </form>
+	</body>
+    <script>
+        var user = {{ Dict|safe }};
+        var li1 = $("<li>用户id："+user.uid+"<li>");
+        var li2 = $("<li>昵称:"+user.name+"<li>");
+        $("#userinfo").append(li1);
+        $("#userinfo").append(li2);
+
+        for (var i = 0; i < $('.list-group-item').length; ++i) {
+            (function(index) {
+                $($('.list-group-item')[index]).mouseup(function(e) {
+                    if (e.which === 1) {
+                        $('#id_uid').attr('value', user.uid);
+                        $('#id_lid').attr('value', (index + 1));
+                        document.into_lobby_form.action = "/lobby/";
+                        document.into_lobby_form.submit();
+                    }
+                });
+            })(i);
+        }
+    </script>
+</html>

@@ -11,3 +11,13 @@ def has_same_uid(user):
         return False
     else:
         return True
+
+
+# 将类转为字典
+def to_dict(obj):
+    dict = {}
+    for name, value in vars(obj).items():
+        if name == '_state':
+            continue
+        dict[name] = value
+    return dict
