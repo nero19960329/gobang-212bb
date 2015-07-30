@@ -7,11 +7,33 @@
 		<title>五子棋传奇·霸业</title>
 		<script src='/static/js/jquery-2.1.4.min.js'></script>
 		<script src='/static/js/login.js' charset="UTF-8"></script>
+		<script>
+            function changepassword(){
+                if(document.getElementById('newpassword').value == document.getElementById('newpassword1').value){
+                    document.password_form.action = "/changepassword/";
+                    document.password_form.submit();
+                    alert("修改密码成功！")
+                }
+                else{
+                    alert("两次输入密码不一致！");
+                    document.getElementById('newpassword').value = '';
+                    document.getElementById('newpassword1').value = '';
+                }
+            }
+            function changename(){
+                alert("修改昵称和头像成功！");
+                document.name_form.action = "/changename/";
+                document.name_form.submit();
+            }
+        </script>
 	</head>
 	<body>
 		<div class='login_box'>
             <h1>欢迎回来</h1>
-            <ul id="userinfo"></ul>
+            <div id="iconbox"></div>
+            <div id="userinfo"></div>
+            <button id="changepassword">修改密码</button>
+            <button id="changename">修改昵称和头像</button>
 		</div>
 		<div class='room_box'>
 			<img src='/static/image/login_logo.gif'>
@@ -26,11 +48,76 @@
             {% csrf_token %}
             {{ into_lobby_form }}
         </form>
+
+        <div id="mask"></div>
+        <div id="passwordbox">
+            <form name="password_form" method="get">
+			    <div class='form-group'>
+				    <lable for='createpassword1'>请输入新密码：</lable>
+				    <input type='password' class='form-control' id='newpassword' placeholder='new password' name="new_password">
+			    </div>
+                <div class='form-group'>
+				    <lable for='createpassword1'>请再次输入新密码：</lable>
+				    <input type='password' class='form-control' id='newpassword1' placeholder='password agian' name="password_again">
+			    </div>
+                <input class="userid" type="text" value="" name="password_uid">
+            </form>
+            <input id="confirm" type="button" value="确认" onclick="changepassword()" />
+            <input id="cancel" type="button" value="取消"  />
+        </div>
+        <div id="namebox">
+            <form name="name_form" method="get">
+			    <div class='form-group'>
+				    <lable for='createpassword1'>请输入你的新昵称：</lable>
+				    <input type='text' class='form-control' id='newpassword' placeholder='new nickname' name="new_name">
+			    </div>
+			    <div class='chooseicon' id="newicon">
+				    <lable>请选择一个头像:</lable>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon1.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon2.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon3.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon4.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon5.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon6.jpg">
+				    </div>
+				    <div class='iconbox'>
+				    	<img src="/static/image/login_icon7.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon8.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon9.jpg">
+				    </div>
+				    <div class='iconbox'>
+					    <img src="/static/image/login_icon10.jpg">
+				    </div>
+			    </div>
+                <input id="iconnum" type="text" value='' name="iconnum">
+                <input class="userid" type="text" value="" name="name_uid">
+            </form>
+            <input id="confirm1" type="button" value="确认" onclick="changename()" />
+            <input id="cancel1" type="button" value="取消"  />
+        </div>
 	</body>
     <script>
         var user = {{ Dict|safe }};
-        var li1 = $("<li>用户id："+user.uid+"<li>");
-        var li2 = $("<li>昵称:"+user.name+"<li>");
+        var li1 = $("<p>用户id：<strong>"+user.uid+"</strong></p>");
+        var li2 = $("<p>昵称: <strong>"+user.name+"</strong></p>");
+        var icon_path = "/static/image/login_icon" + user.iconnum + ".jpg";
+        var icon = $("<img id='icon' src=" + icon_path + ">");
+        $("#iconbox").append(icon);
         $("#userinfo").append(li1);
         $("#userinfo").append(li2);
 
@@ -46,5 +133,66 @@
                 });
             })(i);
         }
+        
+        $("#iconbox").css({
+            "position": "absolute",
+            "top": "20%",
+            "left": "24%",
+            "width":0.5 * 380 / 1899 * $(window).width() + 'px',
+            "padding": "3px",
+            "border-radius": "4px",
+            "background-color":"white"
+        });
+        $(".login_box").css({
+           "text-align":"center"
+        });
+        $("#icon").css({
+           "max-width":"100%"
+        });
+        $("#userinfo").css({
+            "font-size": "25px",
+            "position" :"absolute",
+            "top":"60%",
+            "left":"25%"
+        });
+        $("#changepassword").click(function(){
+            $("#mask").css("display", "block");
+            $("#passwordbox").css("display", "block");
+        });
+        $("#changename").click(function(){
+            $("#mask").css("display","block");
+            $("#namebox").css("display","block");
+            var boxes = $(".iconbox");
+		    for(var i=0; i<boxes.length; i++) {
+                $(boxes[i]).css("height", $(boxes[i]).width());
+                var l = 0.2 * (i % 5) * $(".chooseicon").width() + "px";
+                var t = (0.5 * parseInt(i / 5) + 0.1) * $(".chooseicon").height() + "px";
+                $(boxes[i]).css({
+                    left: l,
+                    top: t
+                });
+                $(".iconbox").eq(i).click(function () {
+                    for (var j = 0; j < boxes.length; j++) {
+                        $(boxes[j]).css("border", '');
+                    }
+                    $(this).css({
+                        "border": "5px solid red"
+                    });
+                    for (var k = 1; k < 11; k++) {
+                        var imageName = this.getElementsByTagName("img")[0].getAttribute("src");
+                        if (imageName == "/static/image/login_icon" + k + ".jpg") {
+                            iconNum = k;
+                            document.getElementById('iconnum').value = iconNum + '';
+                        }
+                    }
+                });
+            }
+            $("#confirm1").css("top","90%");
+            $("#cancel1").css("top","90%");
+        });
+        $(".userid").css("display", "none");
+        document.getElementsByClassName('userid')[0].value = user.uid;
+        document.getElementsByClassName('userid')[1].value = user.uid;
+        document.getElementById('iconnum').value = user.iconnum;
     </script>
 </html>

@@ -65,3 +65,59 @@ def login(request):
             else:
                 return HttpResponse("用户名或密码错误！")
 
+
+# 处理修改密码事件
+def changepassword(request):
+    if request.method == 'GET':
+        from logic.models import User
+        uid = request.GET['password_uid']
+        password = request.GET['new_password']
+        cur_user = User.objects.get(uid=uid)
+        cur_user.password = password
+        userdict = {'uid': cur_user.uid, 'name': cur_user.name, 'iconnum': cur_user.iconnum}
+        cur_user.save()
+        all_lobbies = Lobby.objects.all()
+        lobbies = []
+        into_lobby_form = IntoLobbyForm()
+        lobby_length = all_lobbies.__len__()
+        for i in range(0, lobby_length):
+            lobby = {
+                'user_num': User.objects.filter(lobby_id=(i+1)).__len__(),
+                'lobby_name': all_lobbies[i].name
+            }
+            lobbies.append(lobby)
+        return render(request, 'login_complete.html', {
+            'lobbies': lobbies,
+            'Dict': json.dumps(userdict),
+            'into_lobby_form': into_lobby_form,
+        })
+
+
+# 处理修改昵称和头像事件
+def changename(request):
+    if request.method == 'GET':
+        from logic.models import User
+        uid = request.GET['name_uid']
+        name = request.GET['new_name']
+        iconnum = request.GET['iconnum']
+        cur_user = User.objects.get(uid=uid)
+        cur_user.name = name
+        cur_user.iconnum = iconnum
+        userdict = {'uid': cur_user.uid, 'name': cur_user.name, 'iconnum': cur_user.iconnum}
+        cur_user.save()
+        all_lobbies = Lobby.objects.all()
+        lobbies = []
+        into_lobby_form = IntoLobbyForm()
+        lobby_length = all_lobbies.__len__()
+        for i in range(0, lobby_length):
+            lobby = {
+                'user_num': User.objects.filter(lobby_id=(i+1)).__len__(),
+                'lobby_name': all_lobbies[i].name
+            }
+            lobbies.append(lobby)
+        return render(request, 'login_complete.html', {
+            'lobbies': lobbies,
+            'Dict': json.dumps(userdict),
+            'into_lobby_form': into_lobby_form,
+        })
+

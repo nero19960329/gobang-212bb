@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^gobang/$', 'logic.views.gobang', name='gobang'),
     url(r'^user_number/$', 'logic.views.user_number', name='user_number'),
     url(r'^lobby_data/$', 'logic.views.lobby_data', name='lobby_data'),
+    url(r'^changepassword/$', 'logic.user.changepassword', name='changepassword'),
+    url(r'^changename/$', 'logic.user.changename', name='changename'),
     # url(r'^login_complete$/', 'logic.user.logincomplete', name='login_complete'),
 ]
 
