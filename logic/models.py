@@ -16,3 +16,4 @@ class User(models.Model):
     name = models.CharField(max_length=8)       # 昵称
     password = models.CharField(max_length=16)  # 密码
     lobby_id = models.IntegerField()            # 用户所在大厅id
+    iconnum = models.CharField(max_length=2)    # 用户头像号

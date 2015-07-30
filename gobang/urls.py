@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^lobby/$', 'logic.views.lobby', name='lobby'),
     url(r'^register/$', 'logic.user.register', name='register'),
     url(r'^login/$', 'logic.user.login', name='login'),
-    #url(r'^login_complete$/', 'logic.user.logincomplete', name='login_complete'),
+    url(r'^changepassword/$', 'logic.user.changepassword', name='changepassword'),
+    url(r'^changename/$', 'logic.user.changename', name='changename'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
